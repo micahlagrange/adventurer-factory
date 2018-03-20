@@ -19,7 +19,7 @@ For example:
  => #<AdventurerFactory::Die:0x007fd8a004c03b @sides=100, @value=42>
 ```
 
-# Die objects
+## Die objects
 
 Respond to some plain `Fixnum` operations you might expect such as greater than, less than:
 ```ruby
@@ -38,3 +38,19 @@ As well as providing a method to simply get the value:
 2.4.2 :005 > die.value
  => 6 
 ```
+
+## Bulk operations
+
+Get a bunch of dice rolls of the same type all at once with AdventurerFactory::Dice.bulk
+
+This returns an array of dice objects of the length you specify.
+To get 3 10-sided dice for example:
+
+```ruby
+
+2.4.2 :001 > AdventurerFactory::Dice.bulk(3, :d10)
+..d10:2..d10:2..d10:3 => [#<AdventurerFactory::Die:0x007fa9fc8cc320 @sides=10, @value=2>, #<AdventurerFactory::Die:0x007fa9fc8cc1e0 @sides=10, @value=2>, #<AdventurerFactory::Die:0x007fa9fc8cc0c8 @sides=10, @value=3>] 
+```
+
+For the moment, a summary of the dice goes to `stderr` just showing type and value.
+
