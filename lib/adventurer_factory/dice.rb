@@ -33,6 +33,7 @@ module AdventurerFactory
     def self.d20
       Die.new(20)
     end
+
     def self.bulk(count, die)
       raise ArgumentError.new("Count must be an integer") unless count.class == Fixnum
       raise ArgumentError.new("Die type must be a symbol such as :d6") unless die.class == Symbol
@@ -44,9 +45,11 @@ module AdventurerFactory
       dice.each{|d| STDERR.print "..d#{d.sides}:#{d.value}" }
       return dice
     end
+
     def self.d(n)
       Die.new(n)
     end
+
     def self.method_missing(meth, *args, &block)
       if meth =~ /^d\d+$/
         sides = meth.to_s.match(/^d(.*)$/)[1]
