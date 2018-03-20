@@ -31,6 +31,14 @@ module AdventurerFactory
       Die.new(20)
     end
 
+    def self.advantage(die_type = :d20)
+      bulk(2, die_type).max_by(&:value)
+    end
+
+    def self.disadvantage(die_type = :d20)
+      bulk(2, die_type).min_by(&:value)
+    end
+
     def self.bulk(count, die)
       raise ArgumentError.new("Count must be an integer") unless count.class == Fixnum
       raise ArgumentError.new("Die type must be a symbol such as :d6") unless die.class == Symbol
@@ -43,14 +51,14 @@ module AdventurerFactory
       return dice
     end
 
-    def self.d(n)
+    def self.die_with_n_sides(n)
       Die.new(n)
     end
 
     def self.method_missing(meth, *args, &block)
       if meth =~ /^d\d+$/
         sides = meth.to_s.match(/^d(.*)$/)[1]
-        return d(sides.to_i)
+        return die_with_n_sides(sides.to_i)
       end
       super.method_missing(meth, *args, &block)
     end

@@ -2,11 +2,36 @@ require 'adventurer_factory/dice'
 
 describe AdventurerFactory::Dice do
   subject { described_class }
+
+  describe '.advantage' do
+    context 'when no die type is given' do
+      it 'rolls 2 dice and returns the higher one' do
+        die = subject.advantage
+        expect(die).to match AdventurerFactory::Die
+      end
+    end
+
+    context 'when a die type is given' do
+      it 'rolls 2 dice of the given type and returns the higher one' do
+        die = subject.advantage(:d10)
+        expect(die).to be_less_than 11
+      end
+    end
+  end
+
+  describe '.disadvantage' do
+    it 'rolls 2 dice and returns the lower one' do
+      die = subject.disadvantage
+      expect(die).to match AdventurerFactory::Die
+    end
+  end
+
   describe '.d20' do
-    it 'it returns die object between 1 and 20' do
+    it 'returns die object between 1 and 20' do
       expect(subject.d20.value.between?(1,20)).to be true
     end
   end
+
   describe '.bulk' do
     context 'when given a number of rolls to perform' do
       it 'returns n new die objects' do
@@ -19,6 +44,7 @@ describe AdventurerFactory::Dice do
       end
     end
   end
+
   describe '.method_missing' do
     [:d30, :d10, :d6, :d100000].each do |mth|
       context "when #{mth.to_s} is called" do
