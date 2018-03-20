@@ -31,6 +31,10 @@ Respond to some plain Fixnum operations you might expect such as greater than, l
  => true 
 2.4.2 :004 > die < 1
  => false 
+```
+
+As well as providing a method to simply get the value:
+```
 2.4.2 :005 > die.value
  => 6 
 ```
