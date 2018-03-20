@@ -10,13 +10,13 @@ A d(somenumber) (such as `:d6`, `:d8`, `:d10`, etc) method call returns a Die ob
 
 For example: 
 ```ruby
-2.4.2 :001 > AdventurerFactory::Dice.d20
+AdventurerFactory::Dice.d20
  => #<AdventurerFactory::Die:0x007fd8a0060808 @sides=20, @value=3>
 
-2.4.2 :002 > AdventurerFactory::Dice.d6
+AdventurerFactory::Dice.d6
  => #<AdventurerFactory::Die:0x007fd8a005bf38 @sides=6, @value=5>
 
-2.4.2 :003 > AdventurerFactory::Dice.d100
+AdventurerFactory::Dice.d100
  => #<AdventurerFactory::Die:0x007fd8a004c03b @sides=100, @value=42>
 ```
 
@@ -36,7 +36,7 @@ Respond to some plain `Fixnum` operations you might expect such as greater than,
 
 As well as providing a method to simply get the value:
 ```ruby
-2.4.2 :005 > die.value
+die.value
  => 6 
 ```
 
@@ -49,9 +49,25 @@ To get 3 10-sided dice for example:
 
 ```ruby
 
-2.4.2 :001 > AdventurerFactory::Dice.bulk(3, :d10)
+AdventurerFactory::Dice.bulk(3, :d10)
 ..d10:2..d10:2..d10:3 => [#<AdventurerFactory::Die:0x007fa9fc8cc320 @sides=10, @value=2>, #<AdventurerFactory::Die:0x007fa9fc8cc1e0 @sides=10, @value=2>, #<AdventurerFactory::Die:0x007fa9fc8cc0c8 @sides=10, @value=3>] 
 ```
 
 For the moment, a summary of the dice goes to `stderr` just showing type and value.
 
+Bulk operations are also used under the hood by the `.advantange` and `.disadvantage` module methods:
+
+## Advantage, disadvantage
+
+Roll 2 dice, get the higher one:
+```ruby
+AdventurerFactory::Dice.advantage
+ => #<AdventurerFactory::Die:0x007fd703853630 @sides=20, @value=19> 
+```
+
+Roll 2 and get the lower:
+
+```ruby
+AdventurerFactory::Dice.disadvantage
+ => #<AdventurerFactory::Die:0x007fd70404d4d0 @sides=20, @value=7> 
+```
