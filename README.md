@@ -3,6 +3,7 @@ Helps guide you through the process of creating a DnD 5e character
 
 # Dice module
 
+## Simple dice methods
 `AdventurerFactory::Dice` exposes methods to roll one or more die of any number of sides.
 
 A d(somenumber) (such as `:d6`, `:d8`, `:d10`, etc) method call returns a Die object with the specified number of sides and a random value in the range `1..sides`
