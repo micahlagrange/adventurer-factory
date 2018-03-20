@@ -15,12 +15,9 @@ module AdventurerFactory
     def < val
       @value < val
     end
-    def greater_than? val
-      @value > val
-    end
-    def less_than? val
-      @value < val
-    end
+
+    alias greater_than? >
+    alias less_than? <
     
     private
     
