@@ -59,15 +59,21 @@ Bulk operations are also used under the hood by the `.advantange` and `.disadvan
 
 ## Advantage, disadvantage
 
-Roll 2 dice, get the higher one:
+Roll 2 `:d20`, get the higher one:
 ```ruby
 AdventurerFactory::Dice.advantage
  => #<AdventurerFactory::Die:0x007fd703853630 @sides=20, @value=19> 
 ```
 
-Roll 2 and get the lower:
+Roll 2 `:d20` and get the lower:
 
 ```ruby
 AdventurerFactory::Dice.disadvantage
  => #<AdventurerFactory::Die:0x007fd70404d4d0 @sides=20, @value=7> 
+```
+
+Advantage or disadvantage takes an optional symbol as an argument to generate dice with different numbers of sides:
+```ruby
+AdventurerFactory::Dice.advantage(:d10)
+ => #<AdventurerFactory::Die:0x007fd70404d4d0 @sides=10, @value=7> 
 ```
