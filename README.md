@@ -5,7 +5,7 @@ Helps guide you through the process of creating a DnD 5e character
 
 AdventurerFactory::Dice exposes methods to roll one or more die of any number of sides.
 
-A d _somenumber_ method call returns a Die object with the specified number of sides and a random value in the range 1..sides
+A d_somenumber_ method call returns a Die object with the specified number of sides and a random value in the range 1..sides
 
 For example: 
 ```ruby
