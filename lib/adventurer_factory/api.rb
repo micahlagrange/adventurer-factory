@@ -15,8 +15,19 @@ module AdventurerFactory
         dice = AdventurerFactory::Dice.bulk(count, type)
         @body << JSON.generate(dice.map(&:to_h))
 
+      when /^\/dice\/(d\d+)\/advantage/
+        type = $1.to_sym
+        dice = AdventurerFactory::Dice.advantage
+        @body << JSON.generate(dice.to_h)
+
+      when /^\/dice\/(d\d+)\/disadvantage/
+        type = $1.to_sym
+        dice = AdventurerFactory::Dice.disadvantage
+        @body << JSON.generate(dice.to_h)
+
       when /^\/dice\/(d\d+)/
-        dice = AdventurerFactory::Dice.send($1)
+        type = $1
+        dice = AdventurerFactory::Dice.send(type)
         @body << JSON.generate(dice.to_h)
 
       else

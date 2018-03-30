@@ -53,7 +53,6 @@ module AdventurerFactory
       count.times do
         dice << send(die)
       end
-      dice.each{|d| STDERR.print "..d#{d.sides}:#{d.value}" }
       return dice
     end
 
