@@ -15,6 +15,12 @@ module AdventurerFactory
     def < val
       @value < val
     end
+    def to_h
+      {sides: @sides, value: @value}
+    end
+    def to_s
+      "#{self.class.name}::sides[#{@sides}]::value[#{@value}]"
+    end
 
     alias greater_than? >
     alias less_than? <
