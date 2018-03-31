@@ -1,4 +1,5 @@
 require 'json'
+require 'adventurer_factory/dice'
 
 module AdventurerFactory
   class Api
