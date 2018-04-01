@@ -18,6 +18,28 @@ rackup -I ./lib --port 9001 --host 0.0.0.0 api/config.ru
 $ rake server host=localhost port=8092 library=./lib rack_config=./api/config.ru
 ```
 
+# Using the Api
+
+Once you've started the server it will respond to the following paths:
+`/dice/d20`
+You can pass `d20`, `d10`,  or dice with any number of sides.
+```json
+{"sides":20,"value":6}
+```
+
+bulk operations:
+`/dice/d20/3`
+```json
+[{"sides":20,"value":20},{"sides":20,"value":15},{"sides":20,"value":7}]
+```
+
+`/dice/d20/advantage`
+rolls 2 dice and returns the higher one
+
+`/dice/d20/disadvantage`
+rolls 2 dice and returns the lower one
+
+
 # Code library:
 # Dice module
 
