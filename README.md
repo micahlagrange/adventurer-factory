@@ -1,6 +1,24 @@
 # AdventureFactory
 Helps guide you through the process of creating a DnD 5e character
 
+# Starting the Rack server
+```
+$ rake server
+Starting server: http://0.0.0.0:9001/
+rackup -I ./lib --port 9001 --host 0.0.0.0 api/config.ru
+/usr/lib/ruby/vendor_ruby/rake/file_utils.rb:82: warning: Insecure world writable dir /mnt/c in PATH, mode 040777
+[2018-03-31 23:06:53] INFO  WEBrick 1.4.2
+[2018-03-31 23:06:53] INFO  ruby 2.5.0 (2017-12-25) [x86_64-linux-gnu]
+[2018-03-31 23:06:53] INFO  WEBrick::HTTPServer#start: pid=660 port=9001
+```
+
+### Specifying host/port/config.ru/library dir
+
+```
+$ rake server host=localhost port=8092 library=./lib rack_config=./api/config.ru
+```
+
+# Code library:
 # Dice module
 
 ## Simple dice methods
