@@ -1,0 +1,7 @@
+---
+runtime: ruby
+env: flex
+entrypoint: bundle exec rackup -I lib --port 9001 --host 0.0.0.0 ./api/config.ru 
+network:
+  forwarded_ports:
+    - 9001
