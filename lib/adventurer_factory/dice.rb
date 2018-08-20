@@ -46,7 +46,7 @@ module AdventurerFactory
     end
 
     def self.bulk(count, die)
-      raise ArgumentError.new("Count must be an integer") unless count.class == Fixnum
+      raise ArgumentError.new("Count must be an integer") unless count.class == Integer
       raise ArgumentError.new("Die type must be a symbol such as :d6") unless die.class == Symbol
       raise ArgumentError.new("Die type must match /^d(\d+)$/") unless die =~ /^d(\d+)$/
       dice = []
